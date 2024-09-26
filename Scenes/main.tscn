@@ -1,0 +1,366 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8fqpfjxsug2u"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_tfrug"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tfrug")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1632.0
+offset_bottom = 1216.0
+
+[node name="FreeLandLbl" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 768.0
+offset_right = 660.0
+offset_bottom = 791.0
+text = "Free Land: 100"
+
+[node name="Label2" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 1448.0
+offset_top = 256.0
+offset_right = 1592.0
+offset_bottom = 287.0
+text = "auto creates food"
+
+[node name="Label3" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 1448.0
+offset_top = 288.0
+offset_right = 1640.0
+offset_bottom = 319.0
+text = "auto creates wood"
+
+[node name="Label4" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 1448.0
+offset_top = 320.0
+offset_right = 1640.0
+offset_bottom = 351.0
+text = "auto creates ore"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 148.0
+offset_bottom = 87.0
+text = "Basic Resources"
+
+[node name="FoodBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 96.0
+offset_right = 128.0
+offset_bottom = 127.0
+text = "Gather Food"
+
+[node name="FoodLbl" type="Label" parent="FoodBtn"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 31.0
+text = "0"
+
+[node name="WoodBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 144.0
+offset_right = 128.0
+offset_bottom = 175.0
+text = "Cut Wood"
+
+[node name="WoodLbl" type="Label" parent="WoodBtn"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 31.0
+text = "0"
+
+[node name="StoneBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 192.0
+offset_right = 128.0
+offset_bottom = 223.0
+text = "Mine Stone"
+
+[node name="StoneLbl" type="Label" parent="StoneBtn"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 31.0
+text = "0"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 40.0
+offset_right = 1301.0
+offset_bottom = 63.0
+text = "Population"
+
+[node name="CurrentPopLbl" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 104.0
+offset_right = 1365.0
+offset_bottom = 127.0
+text = "Current Population"
+
+[node name="MaxPopLbl" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 128.0
+offset_right = 1365.0
+offset_bottom = 151.0
+text = "Max Population"
+
+[node name="CreateWorkerBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 160.0
+offset_right = 1337.0
+offset_bottom = 191.0
+text = "Create Worker"
+
+[node name="Label5" type="Label" parent="CreateWorkerBtn"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 285.0
+offset_bottom = 31.0
+text = "20 Food: Create new worker."
+
+[node name="IdleWorkerLbl" type="Label" parent="CreateWorkerBtn"]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 221.0
+offset_bottom = 63.0
+text = "Idle Workers: 0"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 768.0
+offset_right = 704.0
+offset_bottom = 1200.0
+current_tab = 0
+
+[node name="Buildings" type="Label" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Buildings"]
+layout_mode = 2
+offset_right = 448.0
+offset_bottom = 313.0
+
+[node name="TentBtn" type="Button" parent="TabContainer/Buildings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Build Tent"
+
+[node name="TentLbl" type="Label" parent="TabContainer/Buildings/VBoxContainer/TentBtn"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 1.0
+offset_right = 248.0
+offset_bottom = 24.0
+text = "Tents:"
+
+[node name="TentLbl2" type="Label" parent="TabContainer/Buildings/VBoxContainer/TentBtn"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 9.0
+offset_right = 468.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 12
+text = "2 wood, 2 skin: +1 max pop"
+
+[node name="HutBtn" type="Button" parent="TabContainer/Buildings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Build Wooden Hut"
+
+[node name="BarnBtn" type="Button" parent="TabContainer/Buildings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Build Barn"
+
+[node name="BarnBtn2" type="Button" parent="TabContainer/Buildings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Build Wood Stockpile"
+
+[node name="Upgrades" type="Label" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Label" type="Label" parent="TabContainer/Upgrades"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Deity" type="Label" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Conquest" type="Label" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Trade" type="Label" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="FarmerLbl" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 256.0
+offset_right = 1344.0
+offset_bottom = 279.0
+text = "Farmers: 0"
+
+[node name="FarmerPos1" type="Button" parent="FarmerLbl"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = -8.0
+offset_right = 163.0
+offset_bottom = 23.0
+text = "+1"
+
+[node name="FarmerNeg1" type="Button" parent="FarmerLbl"]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -8.0
+offset_right = -37.0
+offset_bottom = 23.0
+text = "-1"
+
+[node name="WoodcutterLbl" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 288.0
+offset_right = 1344.0
+offset_bottom = 311.0
+text = "Woodcutters: 0"
+
+[node name="WoodcutterPos" type="Button" parent="WoodcutterLbl"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = -8.0
+offset_right = 163.0
+offset_bottom = 23.0
+text = "+1"
+
+[node name="WoodcutterNeg" type="Button" parent="WoodcutterLbl"]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -8.0
+offset_right = -37.0
+offset_bottom = 23.0
+text = "-1"
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 320.0
+offset_right = 1344.0
+offset_bottom = 343.0
+text = "Miners: 0"
+
+[node name="MinerPos" type="Button" parent="Label7"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = -8.0
+offset_right = 163.0
+offset_bottom = 23.0
+text = "+1"
+
+[node name="MinerNeg" type="Button" parent="Label7"]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -8.0
+offset_right = -37.0
+offset_bottom = 23.0
+text = "-1"
+
+[node name="SpecialResLbl" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 256.0
+offset_right = 154.0
+offset_bottom = 279.0
+text = "Special Resources"
+
+[node name="Skinslbl" type="Label" parent="SpecialResLbl"]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 136.0
+offset_bottom = 63.0
+text = "Skins:"
+
+[node name="HerbsLbl" type="Label" parent="SpecialResLbl"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 136.0
+offset_bottom = 87.0
+text = "Herbs:"
+
+[node name="OresLbl" type="Label" parent="SpecialResLbl"]
+layout_mode = 0
+offset_top = 88.0
+offset_right = 136.0
+offset_bottom = 111.0
+text = "Ore:"
+
+[node name="LeatherLbl" type="Label" parent="SpecialResLbl"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 40.0
+offset_right = 397.0
+offset_bottom = 63.0
+text = "Leather:"
+
+[node name="PietyLbl" type="Label" parent="SpecialResLbl"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 64.0
+offset_right = 397.0
+offset_bottom = 87.0
+text = "Piety:"
+
+[node name="MetalLbl" type="Label" parent="SpecialResLbl"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 88.0
+offset_right = 397.0
+offset_bottom = 111.0
+text = "Metal:"
+
+[connection signal="pressed" from="FoodBtn" to="." method="_on_food_btn_pressed"]
+[connection signal="pressed" from="WoodBtn" to="." method="_on_wood_btn_pressed"]
+[connection signal="pressed" from="StoneBtn" to="." method="_on_stone_btn_pressed"]
+[connection signal="pressed" from="CreateWorkerBtn" to="." method="_on_create_worker_btn_pressed"]
+[connection signal="pressed" from="TabContainer/Buildings/VBoxContainer/TentBtn" to="." method="_on_tent_btn_pressed"]
+[connection signal="pressed" from="FarmerLbl/FarmerPos1" to="." method="_on_farmer_pos_1_pressed"]
+[connection signal="pressed" from="FarmerLbl/FarmerNeg1" to="." method="_on_farmer_neg_1_pressed"]
+[connection signal="pressed" from="WoodcutterLbl/WoodcutterPos" to="." method="_on_woodcutter_pos_pressed"]
+[connection signal="pressed" from="WoodcutterLbl/WoodcutterNeg" to="." method="_on_woodcutter_neg_pressed"]

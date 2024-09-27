@@ -23,7 +23,7 @@ var maxPops = 0
 var curPops = 0
 var idleWorkers = 0
 
-var freeLand = 100
+var freeLand = 1000
 
 func _ready():
 	var timer = Timer.new()
@@ -31,14 +31,14 @@ func _ready():
 	timer.set_wait_time(1)
 	timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
 	timer.start()
-	
+
 func _on_Timer_timeout():
 	Calculate()
 
 
 func _process(delta):
 	maxPops = tent + (woodHut *2) + (cottage * 6)
-	$MaxPopLbl.text = "Maximum Population: " + str(maxPops)
+	$PopHeading/MaxPopLbl.text = "Maximum Population: " + str(maxPops)
 	GUIData()
 
 
@@ -50,8 +50,8 @@ func GUIData():
 	$StoneBtn/StoneLbl.text = str(stone)
 	$SpecialResLbl/OresLbl.text = "Ores: " + str(ores)
 	$TabContainer/Buildings/VBoxContainer/TentBtn/TentLbl.text = str(tent)
-	$MaxPopLbl.text = "Maximum Population: " + str(maxPops)
-	$CurrentPopLbl.text = "Current Population: " + str(curPops)
+	$PopHeading/MaxPopLbl.text = "Maximum Population: " + str(maxPops)
+	$PopHeading/CurrentPopLbl.text = "Current Population: " + str(curPops)
 #--CLICKER FUNCTIONS-------------
 
 func _on_food_btn_pressed():
@@ -111,18 +111,45 @@ func _on_farmer_pos_1_pressed():
 
 
 func Calculate():
+	var consume
 	if (farmers > 0):
 		food += (farmers * baseGathering)
+		consume = "forage"
+		SpecialResourceGather(consume)
 		$FoodBtn/FoodLbl.text = str(food)
 	if (woodcutters > 0):
+		consume = "forestry"
+		SpecialResourceGather(consume)
 		wood += (woodcutters * baseGathering)
 		$WoodBtn/WoodLbl.text = str(wood)
+	if (miners > 0):
+		consume = "mining"
+		SpecialResourceGather(consume)
+		stone += 1
+		$StoneBtn/StoneLbl.text = str(stone)
 	if (curPops > 0):
 		food -= (miners + woodcutters) * 0.1
-	#idleWorkers -= farmers + miners + woodcutters
 	$CreateWorkerBtn/IdleWorkerLbl.text = "Idle Workers: " + str(idleWorkers)
 	print(food)
 
+
+func SpecialResourceGather(type):
+	rng = randi_range(1, 14)
+	if (type == "forage"):
+		$FoodBtn/FoodLbl.text = str(food)
+		if (rng == 3):
+			skins += 1
+			$SpecialResLbl/Skinslbl.text = "Skins: " + str(skins)
+	if (type == "forestry"):
+		$WoodBtn/WoodLbl.text = str(wood)
+		if (rng == 5):
+			herbs += 1
+			$SpecialResLbl/HerbsLbl.text = "Herbs: " + str(herbs)
+	if (type == "mining"):
+		$StoneBtn/StoneLbl.text = str(stone)
+		if (rng == 11):
+			ores += 1
+			$SpecialResLbl/OresLbl.text = "Ores: " + str(ores)
 
 func _on_farmer_neg_1_pressed():
 	if (farmers >= 1):
@@ -130,7 +157,6 @@ func _on_farmer_neg_1_pressed():
 		farmers -= 1
 		$FarmerLbl.text = "Farmers: " + str(farmers)
 		$CreateWorkerBtn/IdleWorkerLbl.text = "Idle Workers: " + str(idleWorkers)
-
 
 func _on_woodcutter_pos_pressed() -> void:
 	if (idleWorkers >= 1):
@@ -145,4 +171,20 @@ func _on_woodcutter_neg_pressed() -> void:
 		idleWorkers += 1
 		woodcutters -= 1
 		$WoodcutterLbl.text = "Woodcutters: " + str(woodcutters)
+		$CreateWorkerBtn/IdleWorkerLbl.text = "Idle Workers: " + str(idleWorkers)
+
+
+func _on_miner_pos_pressed() -> void:
+	if (idleWorkers >= 1):
+		idleWorkers -= 1
+		miners += 1
+		$MinerLbl.text = "Miners: " + str(miners)
+		$CreateWorkerBtn/IdleWorkerLbl.text = "Idle Workers: " + str(idleWorkers)
+
+
+func _on_miner_neg_pressed() -> void:
+	if (miners >= 1):
+		idleWorkers += 1
+		miners -= 1
+		$MinerLbl.text = "Miners: " + str(miners)
 		$CreateWorkerBtn/IdleWorkerLbl.text = "Idle Workers: " + str(idleWorkers)

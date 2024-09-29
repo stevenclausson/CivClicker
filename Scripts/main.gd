@@ -1,6 +1,8 @@
 extends Control
 var rng = RandomNumberGenerator.new()
 
+var numberOfClicks = 0
+
 var food = 0
 var wood = 0
 var stone = 0
@@ -39,6 +41,7 @@ func _on_Timer_timeout():
 func _process(delta):
 	maxPops = tent + (woodHut *2) + (cottage * 6)
 	$PopHeading/MaxPopLbl.text = "Maximum Population: " + str(maxPops)
+	$ClicksCounterLbl.text = "Clicks: " + str(numberOfClicks)
 	GUIData()
 
 
@@ -52,10 +55,12 @@ func GUIData():
 	$TabContainer/Buildings/VBoxContainer/TentBtn/TentLbl.text = str(tent)
 	$PopHeading/MaxPopLbl.text = "Maximum Population: " + str(maxPops)
 	$PopHeading/CurrentPopLbl.text = "Current Population: " + str(curPops)
+	
 #--CLICKER FUNCTIONS-------------
 
 func _on_food_btn_pressed():
 	food += 1
+	numberOfClicks += 1
 	$FoodBtn/FoodLbl.text = str(food)
 	rng = randi_range(1, 14)
 	if (rng == 3):
@@ -64,6 +69,7 @@ func _on_food_btn_pressed():
 
 func _on_wood_btn_pressed():
 	wood += 1
+	numberOfClicks += 1
 	$WoodBtn/WoodLbl.text = str(wood)
 	rng = randi_range(1,14)
 	if (rng == 4):
@@ -73,6 +79,7 @@ func _on_wood_btn_pressed():
 
 func _on_stone_btn_pressed():
 	stone += 1
+	numberOfClicks += 1
 	$StoneBtn/StoneLbl.text = str(stone)
 	rng = randi_range(1, 14)
 	if (rng == 5):
